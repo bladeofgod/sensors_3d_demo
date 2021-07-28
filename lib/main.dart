@@ -138,6 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _streamSubscriptions
         .add(accelerometerEvents.listen((AccelerometerEvent event) {
+          debugPrint('x : ${event.x}   y : ${event.y}   z : ${event.z}');
       setState(() {
         _accelerometerValues = <double>[event.x, event.y, event.z];
       });
