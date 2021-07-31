@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:sensors/sensors.dart';
+import 'package:sensors_3d_demo/eye_3d.dart';
 import 'package:sensors_3d_demo/snake.dart';
 
 void main() {
@@ -26,7 +27,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Builder(
+        builder: (_) => Eye3d(),
+      ),
     );
   }
 }
@@ -138,7 +141,6 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _streamSubscriptions
         .add(accelerometerEvents.listen((AccelerometerEvent event) {
-          debugPrint('x : ${event.x}   y : ${event.y}   z : ${event.z}');
       setState(() {
         _accelerometerValues = <double>[event.x, event.y, event.z];
       });
